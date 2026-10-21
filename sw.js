@@ -1,6 +1,6 @@
 /* Service worker: deixa o app instalável e abre a "casca" mesmo com internet fraca.
    A consulta em si (Apps Script) sempre vem da internet, com os valores atualizados. */
-var CACHE = 'descargas-los-v1';
+var CACHE = 'descargas-los-v2';
 var FILES = ['./', './index.html', './config.js', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png', './icons/logo.png'];
 
