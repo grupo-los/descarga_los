@@ -73,12 +73,20 @@
   </div>
 </div>
 
-<script src="config.js"></script>
 <script>
+/* Carrega o config.js sempre atualizado (o GitHub guarda cópia por até 10 min) */
 (function () {
+  var sc = document.createElement('script');
+  sc.src = 'config.js?v=' + Date.now();
+  sc.onload = sc.onerror = start;
+  document.head.appendChild(sc);
+})();
+function start() {
   var $ = function (id) { return document.getElementById(id); };
   var cfg = window.APP_CONFIG || {};
-  var base = String(cfg.APP_URL || '').trim();
+  var raw = String(cfg.APP_URL || '').trim();
+  /* Aceita o link mesmo com espaços, ?p=motorista, # ou / no final */
+  var base = raw.split('#')[0].split('?')[0].replace(/\/+$/, '');
   var cover = $('cover');
 
   function showCover(title, text, retry) {
@@ -90,8 +98,12 @@
   }
 
   /* 1) Abre a consulta dos motoristas dentro do app */
-  if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(base)) {
-    showCover('App ainda não configurado', 'Falta colar o link do Apps Script (terminado em /exec) no arquivo config.js do GitHub.', false);
+  if (!raw || raw.indexOf('COLE_AQUI') >= 0) {
+    showCover('App ainda não configurado', 'Falta colar o link do Apps Script (terminado em /exec) no arquivo config.js do GitHub. Se acabou de colar, espere 1 minuto e recarregue.', true);
+  } else if (/\/dev$/.test(base)) {
+    showCover('Link de teste no config.js', 'O link colado termina em /dev, que só funciona para quem edita o projeto. Use o link de Gerenciar implantações, que termina em /exec. Lido: ' + raw, false);
+  } else if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(base)) {
+    showCover('Link inválido no config.js', 'O link precisa começar com https://script.google.com e terminar em /exec (copie em Implantar > Gerenciar implantações, não da barra do navegador). Lido: ' + raw, false);
   } else if (!navigator.onLine) {
     showCover('Sem internet', 'A consulta precisa de internet para mostrar os valores atualizados. Conecte e tente de novo.', true);
   } else {
@@ -134,7 +146,7 @@
   window.addEventListener('appinstalled', function () { $('install').hidden = true; });
 
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});
-})();
+}
 </script>
 </body>
 </html>
