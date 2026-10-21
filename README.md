@@ -2,14 +2,21 @@
 
 Consulta de valores e regras de descarga por cliente.
 
-- **App dos motoristas (este site):** pode ser instalado no celular e abre direto na consulta (somente leitura).
-- **App da equipe:** o link normal do Apps Script (`.../exec`), protegido por senha, para pesquisar e editar.
+Dois apps instaláveis no mesmo site:
+
+| App | Endereço | O que abre |
+|---|---|---|
+| **Descargas LOS** (motoristas) | `https://iaralevyfin.github.io/descarga_los/` | Consulta somente leitura |
+| **LOS Equipe** | `https://iaralevyfin.github.io/descarga_los/equipe/` | App completo, com senha, para pesquisar e editar |
+
+Os dois usam o mesmo `config.js`.
 
 ## Estrutura
 
 | Pasta / arquivo | Para que serve |
 |---|---|
 | `index.html`, `manifest.webmanifest`, `sw.js`, `icons/` | App instalável dos motoristas (GitHub Pages) |
+| `equipe/` | App instalável da equipe (abre o app completo com senha) |
 | `config.js` | **Único arquivo para configurar**: o link do Apps Script |
 | `apps-script/` | Cópia do código do Google Apps Script (`Code.gs`, `Index.html`, `Motorista.html`) |
 

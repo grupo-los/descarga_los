@@ -1,4 +1,5 @@
 {
+  "id": "./",
   "name": "Descargas | Grupo LOS",
   "short_name": "Descargas LOS",
   "description": "Consulta de valores e regras de descarga por cliente para os motoristas do Grupo LOS.",
@@ -10,8 +11,23 @@
   "background_color": "#F1F3F6",
   "theme_color": "#103F69",
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
