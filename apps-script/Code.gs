@@ -37,6 +37,10 @@ const CONFIG = {
   // Se existir uma coluna com este nome, o motorista vê ELA no lugar da OBSERVAÇÃO interna.
   OBS_MOTORISTA_COL: 'OBS_MOTORISTA',
 
+  // Link que vai para os motoristas (botão "Link motoristas" e WhatsApp de cada cliente).
+  // Com o app do GitHub publicado, use o link dele. Deixe '' para usar o link do Apps Script.
+  LINK_MOTORISTA: 'https://grupo-los.github.io/descarga_los/',
+
   // Avisos que aparecem para o motorista (pode editar, incluir ou apagar linhas)
   AVISOS_MOTORISTA: [
     'Mesmo que o valor confira com o app, envie a descarga para o financeiro: Adya – (81) 98637-7889.',
@@ -99,8 +103,12 @@ function login(senha) {
 /** Link e código da consulta dos motoristas, para copiar / mandar no WhatsApp. */
 function getLinkMotorista(senha) {
   auth_(senha);
-  const base = ScriptApp.getService().getUrl() || '';
-  return JSON.stringify({ url: base ? base + '?p=motorista' : '', pin: CONFIG.PIN_MOTORISTA });
+  let url = String(CONFIG.LINK_MOTORISTA || '').trim();
+  if (!url) {
+    const base = ScriptApp.getService().getUrl() || '';
+    url = base ? base + '?p=motorista' : '';
+  }
+  return JSON.stringify({ url: url, pin: CONFIG.PIN_MOTORISTA });
 }
 
 /* ============ LEITURA (EQUIPE) ============ */
