@@ -686,7 +686,7 @@ $('panel').addEventListener('click', e => {
   if (act === 'save') save();
   if (act === 'copy') copy(summary(current.d), 'Resumo copiado.');
   if (act === 'wa'){
-    const extra = LINK ? `\n\nConsultar no app: ${LINK}&q=${digits(current.d.CNPJ).padStart(14,'0')}` : '';
+    const extra = LINK ? `\n\nConsultar no app: ${LINK}${LINK.indexOf('?') >= 0 ? '&' : '?'}q=${digits(current.d.CNPJ).padStart(14,'0')}` : '';
     window.open(waUrl(summary(current.d) + extra), '_blank', 'noopener');
   }
   if (act === 'copylink') copy(LINK, 'Link copiado.');
