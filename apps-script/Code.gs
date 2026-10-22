@@ -25,7 +25,7 @@ const CONFIG = {
   // Cada pessoa da equipe com a sua senha. O nome aparece no HISTORICO.
   // TROQUE as senhas abaixo antes de implantar (o app não abre com a senha padrão).
   USUARIOS: [
-    { nome: 'Administrador', senha: 'TROQUE-ESTA-SENHA' }
+    { nome: 'Administrador', senha: '12345' }
     // , { nome: 'Ana', senha: 'outra-senha' }
   ],
 
